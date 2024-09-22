@@ -21,3 +21,28 @@ struct SuperHero: Codable, Identifiable {
 struct SuperHeroImage: Codable{
     let url: String
 }
+
+struct SuperHeroComplete: Codable {
+    let id: String
+    let name: String
+    let image: SuperHeroImage
+    let powerstats: Powerstats
+    let biography: Biography
+}
+
+struct Powerstats: Codable {
+    let intelligence, strength, speed, durability: String
+    let power, combat: String
+}
+
+struct Biography: Codable {
+    let fullName: String
+    let aliases: [String]
+    let publisher, alignment: String
+
+    enum CodingKeys: String, CodingKey {
+        case fullName = "full-name"
+        case aliases
+        case publisher, alignment
+    }
+}
